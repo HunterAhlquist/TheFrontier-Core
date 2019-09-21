@@ -36,4 +36,16 @@ public class Crafting {
 		return craftEnchGoldApple;
 	}
 	
+	public static ShapedRecipe sleepyEye() {
+		ItemStack sleepyEye = ItemDef.defineBedTPItem();
+		NamespacedKey sleepyEyeKey = new NamespacedKey(Main.getPlugin(Main.class), "SLEEPY_EYE");
+		ShapedRecipe craftSleepyEye = new ShapedRecipe(sleepyEyeKey, sleepyEye);
+		craftSleepyEye.shape("   ", " S ", "EBE");
+		craftSleepyEye.setIngredient('S', Material.FERMENTED_SPIDER_EYE);
+		craftSleepyEye.setIngredient('E', Material.ENDER_EYE);
+		craftSleepyEye.setIngredient('B', Material.BLAZE_POWDER);
+		
+		return null;
+	}
+	
 }
