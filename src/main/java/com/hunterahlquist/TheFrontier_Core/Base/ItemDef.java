@@ -16,8 +16,6 @@ public class ItemDef {
 		chargedCreeperEgg = new ItemStack(Material.CREEPER_SPAWN_EGG, 1);
 		chargedCreeperEgg.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
 		ItemMeta chargedCEMeta = chargedCreeperEgg.getItemMeta();
-		List<String> loreText = Arrays.asList("The creeper egg shakes violently as if", "it's about to explode in your hand.");
-		chargedCEMeta.setLore(loreText);
 		chargedCEMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		chargedCEMeta.setDisplayName("Creeper Spawn Egg [Charged]");
 		chargedCreeperEgg.setItemMeta(chargedCEMeta);
