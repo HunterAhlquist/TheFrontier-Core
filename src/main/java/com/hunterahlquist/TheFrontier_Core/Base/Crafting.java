@@ -36,7 +36,7 @@ public class Crafting {
 		return craftEnchGoldApple;
 	}
 	
-	public static ShapedRecipe sleepyEye() {
+	public static ShapedRecipe sleepyEyeRecipe() {
 		ItemStack sleepyEye = ItemDef.defineBedTPItem();
 		NamespacedKey sleepyEyeKey = new NamespacedKey(Main.getPlugin(Main.class), "SLEEPY_EYE");
 		ShapedRecipe craftSleepyEye = new ShapedRecipe(sleepyEyeKey, sleepyEye);

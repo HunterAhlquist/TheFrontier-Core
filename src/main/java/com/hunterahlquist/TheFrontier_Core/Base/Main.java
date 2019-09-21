@@ -16,7 +16,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		
 		getServer().getPluginManager().registerEvents(new MobDrops(), this);
-		getServer().getPluginManager().registerEvents(new ChargedCreeperEgg(), this);
+		getServer().getPluginManager().registerEvents(new Events(), this);
 		getServer().getPluginManager().registerEvents(new PlayerSpawning(), this);
 		
 		
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 	}
 	
-	@Override
+	@Override 
 	public boolean onCommand (CommandSender sender, Command command, String label, String[] args) {
 		
 		switch (label.toLowerCase()) {
@@ -41,6 +41,7 @@ public class Main extends JavaPlugin implements Listener {
 				}
 			case "support":
 				try {
+					@SuppressWarnings("unused")
 					Player player = (Player) sender;
 					sender.sendMessage(ChatColor.GREEN + "Vote for the server to get more players on: ");
 					sender.sendMessage(ChatColor.BLUE + "https://www.planetminecraft.com/server/the-frontier-4391381/vote/");
@@ -60,6 +61,7 @@ public class Main extends JavaPlugin implements Listener {
 	public void addRecipes() {
 		getServer().addRecipe(Crafting.chargedCreeperEggRecipe());
 		getServer().addRecipe(Crafting.enchGoldAppleRecipe());
+		getServer().addRecipe(Crafting.sleepyEyeRecipe());
 	}
 	
 	
