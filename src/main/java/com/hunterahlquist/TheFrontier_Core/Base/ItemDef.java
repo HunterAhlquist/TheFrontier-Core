@@ -31,7 +31,7 @@ public class ItemDef {
 		bedTP = new ItemStack(Material.ENDER_EYE, 1);
 		bedTP.addUnsafeEnchantment(Enchantment.LUCK, 1);
 		ItemMeta bedTPMeta = bedTP.getItemMeta();
-		List<String> loreText = Arrays.asList("Like an ender eye, but more tired. Will travel to your bed to get some shut-eye.");
+		List<String> loreText = Arrays.asList("Like an ender eye, but more tired.\rWill teleport to your bed to get some shut-eye.");
 		bedTPMeta.setLore(loreText);
 		bedTPMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		bedTPMeta.setDisplayName("Sleepy Eye");

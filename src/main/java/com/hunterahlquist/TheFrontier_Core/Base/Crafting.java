@@ -45,7 +45,7 @@ public class Crafting {
 		craftSleepyEye.setIngredient('E', Material.ENDER_EYE);
 		craftSleepyEye.setIngredient('B', Material.BLAZE_POWDER);
 		
-		return null;
+		return craftSleepyEye;
 	}
 	
 }

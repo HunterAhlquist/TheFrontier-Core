@@ -1,7 +1,7 @@
 name: TheFrontier_Core
 main: com.hunterahlquist.TheFrontier_Core.Base.Main
 api-version: 1.14
-version: 0.3.0
+version: 0.3.1
 depend:
     [RandomTP]
 commands:

@@ -40,10 +40,12 @@ public class Events implements Listener {
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) { //check if the air was right clicked
 			
 			if (user.getInventory().getItemInMainHand().isSimilar(ItemDef.defineBedTPItem())) {
-				user.getInventory().getItemInMainHand().setAmount(user.getInventory().getItemInMainHand().getAmount() - 1);
-				user.playSound(user.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 1, 0.3f);
-				user.teleport(user.getBedSpawnLocation());
-				
+				event.setCancelled(true);
+				if (user.getBedSpawnLocation() != null) {
+					user.getInventory().getItemInMainHand().setAmount(user.getInventory().getItemInMainHand().getAmount() - 1);
+					user.playSound(user.getLocation(), Sound.BLOCK_END_PORTAL_SPAWN, 1, 0.3f);
+					user.teleport(user.getBedSpawnLocation());
+				}
 			}
 				
 		}
