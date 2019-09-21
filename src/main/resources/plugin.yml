@@ -1,0 +1,22 @@
+name: TheFrontier_Core
+main: com.hunterahlquist.TheFrontier_Core.Base.Main
+api-version: 1.14
+version: 0.3.0
+depend:
+    [RandomTP]
+commands:
+    guide:
+        description: Show yourself a guide to the server.
+        usage: /guide
+        permission: TheFrontier_Core.guide
+        permission-message: You don't have <permission>
+    support:
+        description: Learn how to help the server grow.
+        usage: /support
+        permission: TheFrontier_Core.support
+        permission-message: You don't have <permission>
+permissions:
+    TheFrontier_Core.guide:
+        description: Permissions for the guide command.
+    TheFrontier_Core.support:
+        description: Permissions for the support command.
