@@ -11,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class Events implements Listener {
 	
 	@EventHandler //tells the server that this is an event
@@ -43,8 +45,11 @@ public class Events implements Listener {
 				event.setCancelled(true);
 				if (user.getBedSpawnLocation() != null) {
 					user.getInventory().getItemInMainHand().setAmount(user.getInventory().getItemInMainHand().getAmount() - 1);
-					user.playSound(user.getLocation(), Sound.BLOCK_END_PORTAL_SPAWN, 1, 0.3f);
+					user.playSound(user.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1.1f);
+					user.playSound(user.getBedSpawnLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1.1f);
 					user.teleport(user.getBedSpawnLocation());
+				} else {
+					user.sendMessage(ChatColor.RED + "You do not have a bed available to you.");
 				}
 			}
 				
