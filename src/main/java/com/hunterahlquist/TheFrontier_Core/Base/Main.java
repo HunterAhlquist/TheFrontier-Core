@@ -1,23 +1,34 @@
 package com.hunterahlquist.TheFrontier_Core.Base;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.hunterahlquist.TheFrontier_Core.Definitions.Crafting;
+import com.hunterahlquist.TheFrontier_Core.CustomEnchantments.SmeltingE;
 
 import net.md_5.bungee.api.ChatColor;
 
 
 public class Main extends JavaPlugin implements Listener {
 	
+	
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new Events(), this);
-		
+		registerAllEnchantments();
 		addRecipes();
+		
+	}
+	
+	@Override
+	public void onDisable() {
 		
 	}
 	
@@ -61,5 +72,26 @@ public class Main extends JavaPlugin implements Listener {
 		getServer().addRecipe(Crafting.sleepyEyeRecipe());
 	}
 	
+	private void registerAllEnchantments() {
+		SmeltingE smeltE = new SmeltingE();
+		
+	}
+	
+	//Load custom enchantments
+    public static void registerEnchantment(Enchantment enchantment) {
+        boolean registered = true;
+        try {
+            Field f = Enchantment.class.getDeclaredField("acceptingNew");
+            f.setAccessible(true);
+            f.set(null, true);
+            Enchantment.registerEnchantment(enchantment);
+        } catch (Exception e) {
+            registered = false;
+            e.printStackTrace();
+        }
+        if(registered){
+            // It's been registered!
+        }
+    }
 	
 }
