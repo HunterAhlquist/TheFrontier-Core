@@ -1,4 +1,4 @@
-package com.hunterahlquist.TheFrontier_Core.Base;
+package com.hunterahlquist.TheFrontier_Core.Definitions;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class ItemDef {
+public class ItemData {
 	
 	public static ItemStack defineChargedCreeperEgg() {
 		ItemStack chargedCreeperEgg;

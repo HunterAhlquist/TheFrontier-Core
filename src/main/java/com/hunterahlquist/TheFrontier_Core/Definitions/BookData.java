@@ -1,10 +1,10 @@
-package com.hunterahlquist.TheFrontier_Core.Base;
+package com.hunterahlquist.TheFrontier_Core.Definitions;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-public class BooksDef {
+public class BookData {
 	public static ItemStack getIntroBook() {
 		ItemStack finalBook = new ItemStack(Material.WRITTEN_BOOK, 1);
 		

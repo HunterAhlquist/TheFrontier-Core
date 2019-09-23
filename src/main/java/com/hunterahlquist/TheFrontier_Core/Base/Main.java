@@ -6,6 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.hunterahlquist.TheFrontier_Core.Definitions.Crafting;
+
 import net.md_5.bungee.api.ChatColor;
 
 
@@ -13,12 +15,7 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onEnable() {
-		
-		
-		getServer().getPluginManager().registerEvents(new MobDrops(), this);
 		getServer().getPluginManager().registerEvents(new Events(), this);
-		getServer().getPluginManager().registerEvents(new PlayerSpawning(), this);
-		
 		
 		addRecipes();
 		

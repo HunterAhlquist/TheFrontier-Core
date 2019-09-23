@@ -1,4 +1,4 @@
-package com.hunterahlquist.TheFrontier_Core.Base;
+package com.hunterahlquist.TheFrontier_Core.Definitions;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -6,11 +6,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.hunterahlquist.TheFrontier_Core.Base.Main;
+
 
 public class Crafting {
 	
 	public static ShapedRecipe chargedCreeperEggRecipe() {
-		ItemStack chargedCreeperEgg = ItemDef.defineChargedCreeperEgg();
+		ItemStack chargedCreeperEgg = ItemData.defineChargedCreeperEgg();
 		chargedCreeperEgg.setAmount(4);
 		
 		NamespacedKey chargedCEKey = new NamespacedKey(Main.getPlugin(Main.class), "CHARGED_SPAWN_CREEPER_EGG");
@@ -37,7 +39,7 @@ public class Crafting {
 	}
 	
 	public static ShapedRecipe sleepyEyeRecipe() {
-		ItemStack sleepyEye = ItemDef.defineBedTPItem();
+		ItemStack sleepyEye = ItemData.defineBedTPItem();
 		NamespacedKey sleepyEyeKey = new NamespacedKey(Main.getPlugin(Main.class), "SLEEPY_EYE");
 		ShapedRecipe craftSleepyEye = new ShapedRecipe(sleepyEyeKey, sleepyEye);
 		craftSleepyEye.shape("   ", " S ", "EBE");
