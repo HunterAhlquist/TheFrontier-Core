@@ -1,13 +1,18 @@
 package com.hunterahlquist.TheFrontier_Core.Base;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.hunterahlquist.TheFrontier_Core.Definitions.Crafting;
@@ -17,10 +22,14 @@ import net.md_5.bungee.api.ChatColor;
 
 
 public class Main extends JavaPlugin implements Listener {
-	
+	public static List<Enchantment> allCustomEnchantments = new ArrayList<Enchantment>();
 	
 	@Override
 	public void onEnable() {
+		//register custom enchantments into a list
+		allCustomEnchantments.add(new SmeltingE());
+		
+		//startup plugin
 		getServer().getPluginManager().registerEvents(new Events(), this);
 		registerAllEnchantments();
 		addRecipes();
@@ -29,7 +38,7 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onDisable() {
-		
+		unregisterAllEnchantments();
 	}
 	
 	@Override 
@@ -62,6 +71,22 @@ public class Main extends JavaPlugin implements Listener {
 					sender.sendMessage("This command is only for players to use!");
 					return true;
 				}
+			case "fcdebug":
+				try {
+					Player player = (Player) sender;
+					
+					if (player.getName().equalsIgnoreCase("Coldsteak")) {
+						ItemStack smeltPick = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+						smeltPick.addUnsafeEnchantment(allCustomEnchantments.get(0), 1);
+						player.getInventory().addItem(smeltPick);
+						return true;
+					} else {
+						return true;
+					}
+				} catch (Exception e) {
+					sender.sendMessage("This command is only for players to use!");
+					return true;
+				}
 		}
 		return false;
 	}
@@ -73,8 +98,16 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	private void registerAllEnchantments() {
-		SmeltingE smeltE = new SmeltingE();
-		
+		for (Enchantment en : allCustomEnchantments) {
+			registerEnchantment(en);
+		}
+	}
+	
+	
+	private void unregisterAllEnchantments() {
+		for (Enchantment en : allCustomEnchantments) {
+			unregisterEnchantment(en);
+		}
 	}
 	
 	//Load custom enchantments
@@ -90,8 +123,34 @@ public class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
         if(registered){
-            // It's been registered!
+            Main.getPlugin(Main.class).getServer().getConsoleSender().sendMessage("Registered the enchantment: " + enchantment.getKey());
         }
     }
-	
+    //Unload custom enchantments
+    @SuppressWarnings("deprecation")
+	public static void unregisterEnchantment(Enchantment enchantment) {
+    	try {
+            Field keyField = Enchantment.class.getDeclaredField("byKey");
+         
+            keyField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<NamespacedKey, Enchantment> byKey = (HashMap<NamespacedKey, Enchantment>) keyField.get(null);
+         
+            if(byKey.containsKey(enchantment.getKey())) {
+                byKey.remove(enchantment.getKey());
+            }
+            Field nameField = Enchantment.class.getDeclaredField("byName");
+
+            nameField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<String, Enchantment> byName = (HashMap<String, Enchantment>) nameField.get(null);
+
+            if(byName.containsKey(enchantment.getName())) {
+                byName.remove(enchantment.getName());
+            }
+        } catch (Exception ignored) { }
+    }
+    
+ // Disable the Power enchantment
+    
 }
