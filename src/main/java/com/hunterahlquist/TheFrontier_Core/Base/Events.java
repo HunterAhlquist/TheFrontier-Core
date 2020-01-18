@@ -21,14 +21,11 @@ import com.hunterahlquist.TheFrontier_Core.Definitions.BookData;
 import com.hunterahlquist.TheFrontier_Core.Definitions.ItemData;
 
 import net.md_5.bungee.api.ChatColor;
-import randomtp.whoktor.other.RandomTPAPI;
 
 public class Events implements Listener {
 	//parameters
 	public double dropChance = 0.01f; //mob egg drop chance
 	
-	//objects
-	RandomTPAPI rTP = RandomTPAPI.getInstance();
 	
 	//events
 	//charged creeper egg
@@ -117,8 +114,6 @@ public class Events implements Listener {
 	public void onPlayerRespawn(PlayerRespawnEvent e) {
 		if (e.isBedSpawn()) {
 			return;
-		} else {
-			rTP.randomTeleportPlayer(e.getPlayer(), Bukkit.getWorlds().get(0), 2000, e.getRespawnLocation());
 		}
 	}
 	
@@ -127,7 +122,6 @@ public class Events implements Listener {
 		Player player = e.getPlayer();
 		
 		if (!player.hasPlayedBefore()) {
-			rTP.randomTeleportPlayer(player, Bukkit.getWorlds().get(0), 2000);
 			
 			//open the guide for new retarded players who cant fucking read
 			player.openBook(BookData.getIntroBook());
