@@ -123,7 +123,7 @@ public class Events implements Listener {
 		
 		if (!player.hasPlayedBefore()) {
 			
-			//open the guide for new retarded players who cant fucking read
+			//open the guide for new re(BLEEP) players who cant fu(dont cancel me please) read
 			player.openBook(BookData.getIntroBook());
 		}
 	}
